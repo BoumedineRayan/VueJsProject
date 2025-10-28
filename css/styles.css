@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #e0f7fa;
+    background: #ffffff;
     color: #023e8a;
 }
 
@@ -19,7 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    background-color: #e0f7fa;
+    background-color:#ffffff;
     text-align: center;
 }
 
@@ -75,7 +75,7 @@ main {
 }
 
 .nav-links li a:hover {
-    background: #00b4d8;
+    background: #e0f7fa ;
     border-radius: 5px;
     text-decoration: none;
 }
