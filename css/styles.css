@@ -4,7 +4,6 @@ html {
 
 body {
     min-height: 100vh;
-    /* garantir que le body prend toute la hauteur */
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -13,7 +12,34 @@ body {
     color: #023e8a;
 }
 
-/* Le contenu principal prend tout l'espace restant */
+
+
+.intro-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #e0f7fa;
+    text-align: center;
+}
+
+.intro-text {
+    max-width: 800px;
+}
+
+.intro-text h1 {
+    font-size: 2.5rem;
+    color: #023e8a;
+    margin-bottom: 20px;
+}
+
+.intro-text p {
+    font-size: 1.2rem;
+    color: #023e8a;
+    margin-bottom: 30px;
+}
+
+
 main {
     flex: 1;
     display: flex;
@@ -98,7 +124,7 @@ button:hover {
     background: #023e8a;
 }
 
-/* Footer */
+
 .site-footer {
     background-color: #003f5c;
     color: white;
@@ -106,7 +132,7 @@ button:hover {
     text-align: center;
     font-family: Arial, sans-serif;
     margin-top: auto;
-    /* important pour “coller” le footer en bas */
+
 }
 
 .site-footer .footer-content {
@@ -124,3 +150,4 @@ button:hover {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding-top: 10px;
 }
+
