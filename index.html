@@ -1,14 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Sample HTML Page</title>
+    <title>Marine Wildlife</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="js/app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
+
 <body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Marine Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Menaces</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </nav>
+    <!-- Vue App -->
+    <div id="app" class="app-container">
+        <div class="animal-card">
+            <img :src="current.img" alt="Animal Image" class="animal-img">
+            <h2 v-if="showTitle">{{ current.title }}</h2>
+            <p v-else>{{ current.def }}</p>
+            <button @click="toggle">{{ showTitle ? 'Show Description' : 'Show Title' }}</button>
+        </div>
+
+        <div class="nav-buttons">
+            <button @click="prev">Previous</button>
+            <button @click="next">Next</button>
+        </div>
+    </div>
+
+    <script src="data/marineData.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                animals: marineAnimals,
+                index: 0,
+                showTitle: true
+            },
+            computed: {
+                current() {
+                    return this.animals[this.index];
+                }
+            },
+            methods: {
+                next() {
+                    this.index = (this.index + 1) % this.animals.length;
+                    this.showTitle = true;
+                },
+                prev() {
+                    this.index = (this.index - 1 + this.animals.length) % this.animals.length;
+                    this.showTitle = true;
+                },
+                toggle() {
+                    this.showTitle = !this.showTitle;
+                }
+            }
+        });
+    </script>
 </body>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-branding">
+            <p>A project created by <strong>Rayan</strong></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 OceanWatch . All rights reserved.</p>
+    </div>
+</footer>
 </html>
