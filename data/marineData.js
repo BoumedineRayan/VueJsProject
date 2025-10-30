@@ -28,3 +28,24 @@ const marineAnimals = [
         img: "../assets/blue_whale.jpg"
     }
 ];
+
+const Danger = [
+    {
+        title: "Plastic Pollution",
+        def: "Marine animals often mistake plastic for food, causing choking, digestive blockages, and even death.",
+        img: "../assets/plastic_pollution.jpg"
+    },
+    {
+        title: "Overfishing",
+        def: "Excessive fishing depletes fish populations, disrupts food chains, and threatens predators like sharks and tuna.",
+        img: "../assets/overfishing.jpg"
+    },
+    {
+        title: "Climate Change",
+        def: "Rising sea temperatures and ocean acidification damage coral reefs and reduce the survival of many marine species.",
+        img: "../assets/climate_change.jpg"
+    }
+];
+
+
+
