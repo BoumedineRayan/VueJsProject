@@ -45,21 +45,32 @@
             </div>
         </section>
 
-        <!-- Vue App -->
+        <!-- Vue.js App Section -->
+
         <div id="app" class="app-container">
             <div class="info-card">
                 <img :src="current.img" alt="Animal Image" class="info-img">
                 <h2 v-if="showTitle">{{ current.title }}</h2>
                 <p v-else>{{ current.def }}</p>
+        
                 <button @click="toggle">{{ showTitle ? 'Show Description' : 'Show Title' }}</button>
+                <button @click="loadInfoPage">More Info</button>
             </div>
-
+        
             <div class="nav-buttons">
                 <button @click="prev">Previous</button>
                 <button @click="next">Next</button>
             </div>
+        
+            <!-- Modal overlay -->
+            <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+                <div class="modal-content">
+                    <button class="close-btn" @click="closeModal">&times;</button>
+                    <div v-html="infoContent"></div>
+                </div>
+            </div>
         </div>
-
+        
         <script src="data/marineData.js"></script>
         <script>
             new Vue({
@@ -67,7 +78,9 @@
                 data: {
                     animals: marineAnimals,
                     index: 0,
-                    showTitle: true
+                    showTitle: true,
+                    infoContent: '',
+                    showModal: false
                 },
                 computed: {
                     current() {
@@ -85,6 +98,21 @@
                     },
                     toggle() {
                         this.showTitle = !this.showTitle;
+                    },
+                    async loadInfoPage() {
+                        try {
+                            const response = await fetch('Hammerhead.html');
+                            const html = await response.text();
+                            
+                            this.infoContent = html.replace(/<\/?html>|<\/?body>/g, '');
+                            this.showModal = true;
+                        } catch (err) {
+                            this.infoContent = '<p>Error loading info page.</p>';
+                            this.showModal = true;
+                        }
+                    },
+                    closeModal() {
+                        this.showModal = false;
                     }
                 }
             });
