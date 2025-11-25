@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<style>
+    .animal-cards-section {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        flex-wrap: wrap;
+        color: black;
+    }
+
+    .animal-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 1.5rem;
+        max-width: 300px;
+        flex: 1 1 300px;
+    }
+
+    .animal-img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .info-card ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .info-card li {
+        margin: 0.5rem 0;
+    }
+
+    .danger-card {
+        background-color: #ffe6e6;
+    }
+
+
+    .blurred-image-container {
+        position: relative;
+        width: 100%;
+        height: 900px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* The thing to put it in full screen for the user Idk why it did not worked */
+    }
+
+    .blurred-image-container::before {
+        content: "";
+        background-image: var(--bg-url, url('../assets/ima1.jpg'));
+        background-size: cover;
+        background-position: center;
+        filter: blur(6px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .blurred-image-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+    }
+
+    .text-overlay {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: #f2f2f2;
+        font-family: 'Segoe UI', sans-serif;
+        max-width: 80%;
+        animation: fadeIn 1.5s ease-out;
+    }
+
+    .text-overlay h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #ffffff;
+
+        margin-bottom: 20px;
+    }
+
+    .text-overlay p {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: #ffffff;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Information Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Marine Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Menaces.html">Menaces</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </nav>
+</head>
+
+<body>
+    <div class="blurred-image-container" style="--bg-url: url('../assets/Dolphin.jpg');">
+        <div class="text-overlay">
+            <h1>Dolphin</h1>
+        </div>
+    </div>
+
+    <div class="animal-cards-section">
+        <div class="animal-card info-card">
+            <img src="../assets/Dolphin.jpg" alt="Dolphin" class="animal-img">
+            <h2>Dolphin Facts</h2>
+            <ul>
+                <li><strong>Length:</strong> 1.7-4 meters (5.5-13 feet), depending on species</li>
+                <li><strong>Weight:</strong> 50-200 kg (110-440 lbs), depending on species</li>
+                <li><strong>Lifespan:</strong> 20-45 years in the wild</li>
+                <li><strong>Diet:</strong> Fish, squid, and crustaceans</li>
+                <li><strong>Habitat:</strong> Found in oceans and some rivers worldwide, from tropical to temperate
+                    waters</li>
+                <li><strong>Behavior:</strong> Highly intelligent and social; live in pods; communicate through clicks
+                    and whistles</li>
+                <li><strong>Reproduction:</strong> Gestation period of 9-17 months depending on species; usually give
+                    birth to one calf</li>
+                <li><strong>Conservation status:</strong> Varies by species - some are endangered, others are of least
+                    concern (IUCN Red List)</li>
+                <li><strong>Population:</strong> Some species declining due to human activities</li>
+            </ul>
+        </div>
+
+        <div class="animal-card danger-card">
+            <h2>Why are they endangered?</h2>
+            <p>
+                Several dolphin species are endangered due to various human activities. Bycatch in fishing nets is a
+                major threat,
+                as dolphins often get trapped and drown in fishing gear intended for other species. Ocean pollution,
+                including plastic
+                waste and chemical contaminants, affects dolphin health and food sources. Habitat degradation from
+                coastal development,
+                shipping traffic, and noise pollution disrupts dolphin communication and navigation. Climate change
+                impacts ocean
+                temperatures and food availability, affecting dolphin populations. Some species are also hunted for food
+                or captured
+                for entertainment purposes. Conservation efforts include creating marine protected areas, implementing
+                fishing regulations
+                to reduce bycatch, reducing ocean pollution, and international agreements to protect dolphin habitats.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-branding">
+            <p>Un projet de sensibilisation par <strong>Rayan</strong> & <strong>Youcef</strong></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 OceanWatch. Tous droits réservés.</p>
+    </div>
+</footer>
+
+</html>

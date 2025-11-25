@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<style>
+    .animal-cards-section {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        flex-wrap: wrap;
+        color: black;
+    }
+
+    .animal-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 1.5rem;
+        max-width: 300px;
+        flex: 1 1 300px;
+    }
+
+    .animal-img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .info-card ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .info-card li {
+        margin: 0.5rem 0;
+    }
+
+    .danger-card {
+        background-color: #ffe6e6;
+    }
+
+
+    .blurred-image-container {
+        position: relative;
+        width: 100%;
+        height: 900px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* The thing to put it in full screen for the user Idk why it did not worked */
+    }
+
+    .blurred-image-container::before {
+        content: "";
+        background-image: var(--bg-url, url('../assets/ima1.jpg'));
+        background-size: cover;
+        background-position: center;
+        filter: blur(6px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .blurred-image-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+    }
+
+    .text-overlay {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: #f2f2f2;
+        font-family: 'Segoe UI', sans-serif;
+        max-width: 80%;
+        animation: fadeIn 1.5s ease-out;
+    }
+
+    .text-overlay h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #ffffff;
+
+        margin-bottom: 20px;
+    }
+
+    .text-overlay p {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: #ffffff;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Information Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Marine Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Menaces.html">Menaces</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </nav>
+</head>
+
+<body>
+    <div class="blurred-image-container" style="--bg-url: url('../assets/Turtle.jpg');">
+        <div class="text-overlay">
+            <h1>Sea Turtle</h1>
+        </div>
+    </div>
+
+    <div class="animal-cards-section">
+        <div class="animal-card info-card">
+            <img src="../assets/Turtle.jpg" alt="Sea Turtle" class="animal-img">
+            <h2>Sea Turtle Facts</h2>
+            <ul>
+                <li><strong>Length:</strong> 60-190 cm (2-6 ft), depending on species</li>
+                <li><strong>Weight:</strong> 70-700 kg (155-1,540 lbs), depending on species</li>
+                <li><strong>Lifespan:</strong> 50-80 years or more</li>
+                <li><strong>Diet:</strong> Varies by species; includes seagrass, algae, jellyfish, crabs, and shrimp
+                </li>
+                <li><strong>Habitat:</strong> Found in warm and temperate seas worldwide; they nest on sandy beaches
+                </li>
+                <li><strong>Behavior:</strong> Migrate long distances between feeding grounds and nesting beaches;
+                    females return to the same beach where they were born to lay eggs</li>
+                <li><strong>Reproduction:</strong> Females lay 50-200 eggs per nest and may nest multiple times in a
+                    season</li>
+                <li><strong>Conservation status:</strong> Most species are threatened or endangered (IUCN Red List)</li>
+                <li><strong>Population:</strong> All species have declining populations due to human threats</li>
+            </ul>
+        </div>
+
+        <div class="animal-card danger-card">
+            <h2>Why are they endangered?</h2>
+            <p>
+                Nearly all species of sea turtle are classified as threatened or endangered. They face a multitude of
+                dangers, many of which are caused by humans.
+                Bycatch in commercial fishing gear is one of the greatest threats, where turtles are accidentally caught
+                in nets, longlines, and trawlers.
+                Habitat loss is another critical issue; coastal development and artificial lighting disrupt nesting
+                sites and disorient hatchlings.
+                Climate change impacts sand temperatures, which determines the sex of hatchlings, and rising sea levels
+                flood nests.
+                Pollution, especially plastic debris, is often mistaken for food like jellyfish, leading to internal
+                injury.
+                Finally, illegal poaching of turtles and their eggs for meat, leather, and shells continues to threaten
+                their survival.
+                Conservation efforts focus on protecting nesting beaches, modifying fishing gear, and reducing
+                pollution.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-branding">
+            <p>Un projet de sensibilisation par <strong>Rayan</strong> & <strong>Youcef</strong></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 OceanWatch. Tous droits réservés.</p>
+    </div>
+</footer>
+
+</html>

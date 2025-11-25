@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<style>
+    .animal-cards-section {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        flex-wrap: wrap;
+        color: black;
+    }
+
+    .animal-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 1.5rem;
+        max-width: 300px;
+        flex: 1 1 300px;
+    }
+
+    .animal-img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .info-card ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .info-card li {
+        margin: 0.5rem 0;
+    }
+
+    .danger-card {
+        background-color: #ffe6e6;
+    }
+
+
+    .blurred-image-container {
+        position: relative;
+        width: 100%;
+        height: 900px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* The thing to put it in full screen for the user Idk why it did not worked */
+    }
+
+    .blurred-image-container::before {
+        content: "";
+        background-image: var(--bg-url, url('../assets/ima1.jpg'));
+        background-size: cover;
+        background-position: center;
+        filter: blur(6px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .blurred-image-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+    }
+
+    .text-overlay {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: #f2f2f2;
+        font-family: 'Segoe UI', sans-serif;
+        max-width: 80%;
+        animation: fadeIn 1.5s ease-out;
+    }
+
+    .text-overlay h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #ffffff;
+
+        margin-bottom: 20px;
+    }
+
+    .text-overlay p {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: #ffffff;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Information Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Marine Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Menaces.html">Menaces</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </nav>
+</head>
+
+<body>
+    <div class="blurred-image-container" style="--bg-url: url('../assets/Clownfish.jpg');">
+        <div class="text-overlay">
+            <h1>Clownfish</h1>
+        </div>
+    </div>
+
+    <div class="animal-cards-section">
+        <div class="animal-card info-card">
+            <img src="../assets/Clownfish.jpg" alt="Clownfish" class="animal-img">
+            <h2>Clownfish Facts</h2>
+            <ul>
+                <li><strong>Length:</strong> 4-5 inches (10-13 cm)</li>
+                <li><strong>Weight:</strong> 150-250 grams</li>
+                <li><strong>Lifespan:</strong> 6-10 years in the wild</li>
+                <li><strong>Diet:</strong> Omnivorous - algae, zooplankton, small crustaceans, and anemone parasites
+                </li>
+                <li><strong>Habitat:</strong> Warm waters of the Pacific and Indian Oceans, including the Red Sea and
+                    Great Barrier Reef</li>
+                <li><strong>Behavior:</strong> Form symbiotic relationships with sea anemones; live in small groups with
+                    a dominant breeding pair</li>
+                <li><strong>Reproduction:</strong> All clownfish are born male; the dominant male changes sex to female
+                    when needed</li>
+                <li><strong>Conservation status:</strong> Not currently endangered (IUCN Red List)</li>
+                <li><strong>Population:</strong> Generally stable but threatened by coral reef degradation</li>
+            </ul>
+        </div>
+
+        <div class="animal-card danger-card">
+            <h2>What are the threats?</h2>
+            <p>
+                While clownfish are not currently classified as endangered, they face several threats to their
+                populations.
+                Habitat destruction due to coral bleaching is a major concern, as clownfish rely on specific species of
+                sea anemones
+                for shelter and protection. Ocean acidification affects both the clownfish and their host anemones,
+                disrupting their
+                symbiotic relationship. The popularity of clownfish in the aquarium trade has led to over-collection in
+                some areas,
+                particularly following the release of popular movies featuring these fish. Climate change impacts on
+                coral reefs also
+                pose a significant threat to clownfish populations. Conservation efforts include sustainable aquarium
+                trade practices,
+                marine protected areas, and initiatives to combat climate change and coral bleaching.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-branding">
+            <p>Un projet de sensibilisation par <strong>Rayan</strong> & <strong>Youcef</strong></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 OceanWatch. Tous droits réservés.</p>
+    </div>
+</footer>
+
+</html>

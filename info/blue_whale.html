@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<style>
+    .animal-cards-section {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        flex-wrap: wrap;
+        color: black;
+    }
+
+    .animal-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 1.5rem;
+        max-width: 300px;
+        flex: 1 1 300px;
+    }
+
+    .animal-img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .info-card ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .info-card li {
+        margin: 0.5rem 0;
+    }
+
+    .danger-card {
+        background-color: #ffe6e6;
+    }
+
+
+    .blurred-image-container {
+        position: relative;
+        width: 100%;
+        height: 900px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* The thing to put it in full screen for the user Idk why it did not worked */
+    }
+
+    .blurred-image-container::before {
+        content: "";
+        background-image: var(--bg-url, url('../assets/ima1.jpg'));
+        background-size: cover;
+        background-position: center;
+        filter: blur(6px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .blurred-image-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+    }
+
+    .text-overlay {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: #f2f2f2;
+        font-family: 'Segoe UI', sans-serif;
+        max-width: 80%;
+        animation: fadeIn 1.5s ease-out;
+    }
+
+    .text-overlay h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #ffffff;
+
+        margin-bottom: 20px;
+    }
+
+    .text-overlay p {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: #ffffff;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Information Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Marine Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Menaces.html">Menaces</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </nav>
+</head>
+
+<body>
+    <div class="blurred-image-container" style="--bg-url: url('../assets/blue_whale.jpg');">
+        <div class="text-overlay">
+            <h1>Blue Whale</h1>
+        </div>
+    </div>
+
+    <div class="animal-cards-section">
+        <div class="animal-card info-card">
+            <img src="../assets/blue_whale.jpg  " alt="Blue Whale" class="animal-img">
+            <h2>Blue Whale Facts</h2>
+            <ul>
+                <li><strong>Length:</strong> Up to 30 meters (98 feet)</li>
+                <li><strong>Weight:</strong> Up to 200 tons (400,000 lbs)</li>
+                <li><strong>Lifespan:</strong> 80-90 years</li>
+                <li><strong>Diet:</strong> Almost exclusively krill; can eat up to 4 tons of krill per day</li>
+                <li><strong>Habitat:</strong> Found in all oceans except the Arctic; they migrate between cold-water
+                    feeding grounds and warm-water breeding grounds</li>
+                <li><strong>Behavior:</strong> Generally solitary or travel in pairs; known for their powerful,
+                    low-frequency calls that can be heard hundreds of miles away</li>
+                <li><strong>Reproduction:</strong> Females give birth to a single calf every 2-3 years after a gestation
+                    period of 10-12 months</li>
+                <li><strong>Conservation status:</strong> Endangered (IUCN Red List)</li>
+                <li><strong>Population:</strong> Estimated 10,000-25,000 individuals worldwide, a small fraction of
+                    their pre-whaling population</li>
+            </ul>
+        </div>
+
+        <div class="animal-card danger-card">
+            <h2>Why are they endangered?</h2>
+            <p>
+                The blue whale was driven to the brink of extinction by commercial whaling in the 20th century. Although
+                whaling is now banned, they still face serious threats.
+                Ship strikes are a major cause of mortality, as their migration routes often cross major shipping lanes.
+                Entanglement in fishing gear can injure or drown them.
+                Ocean noise pollution from ships and military sonar interferes with their communication, which is vital
+                for finding mates and food. Climate change is a growing threat,
+                as it affects the abundance and distribution of krill, their primary food source. Like other marine
+                animals, they are also vulnerable to pollution and the ingestion of
+                microplastics. While their populations are slowly recovering, these modern threats continue to hinder
+                their comeback.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-branding">
+            <p>Un projet de sensibilisation par <strong>Rayan</strong> & <strong>Youcef</strong></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 OceanWatch. Tous droits réservés.</p>
+    </div>
+</footer>
+
+</html>
