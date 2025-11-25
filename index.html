@@ -71,8 +71,7 @@
             </div>
         </div>
 
-        <!-- This script loads the animal data. It must come BEFORE the Vue script. -->
-        <script src="data/marineData.js"></script>
+        <script src="../data/marineData.js"></script>
         <script>
             new Vue({
                 el: '#app',
@@ -100,10 +99,6 @@
                     toggle() {
                         this.showTitle = !this.showTitle;
                     },
-                    // =================================================================
-                    // THIS IS THE KEY CHANGE
-                    // The loadInfoPage method now fetches the correct file for each animal.
-                    // =================================================================
                     async loadInfoPage() {
                         try {
                             // It uses the 'infoPage' property from the currently selected animal.
