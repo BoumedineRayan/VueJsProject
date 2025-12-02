@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marine Wildlife</title>
+
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -12,7 +13,6 @@
 
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
             <img src="assets/logo.png" alt="Marine Logo" class="logo-img">
@@ -24,36 +24,31 @@
         </ul>
     </nav>
 
-    <!-- Introduction Section -->
     <main>
+
         <section class="intro-section">
             <div class="intro-text">
                 <h1>Welcome to my project!</h1>
                 <p>
                     This website is an initiative by <strong>Rayan</strong> aimed at raising awareness about the
-                    disappearance of marine life in the Pacific Ocean. Explore our resources to learn more.
+                    disappearance of marine life in the Pacific Ocean.
                 </p>
-                <div class="download-buttons nav-buttons">
-                    <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf"
-                        class="btn btn-primary" target="_blank">Download ENSO Report</a>
-                    <a href="https://www.drought.gov/sites/default/files/2024-09/Pacific%20Summer%202024.pdf"
-                        class="btn btn-primary" target="_blank">Download Q2 2024 Report</a>
-                    <a href="https://cdkn.org/sites/default/files/files/IPCC-Oceans-Africa-French_WEB_23June2020-1.pdf"
-                        class="btn btn-primary" target="_blank">Download IPCC Report</a>
-                </div>
             </div>
         </section>
 
-        <!-- Vue.js App Section -->
+        <!-- VUE APP -->
         <div id="app" class="app-container">
 
             <div class="info-card">
-                <img :src="current.img" alt="Animal Image" class="info-img">
+                <img :src="'assets/' + current.img" class="info-img">
 
                 <h2 v-if="showTitle">{{ current.title }}</h2>
                 <p v-else>{{ current.desc }}</p>
 
-                <button @click="toggle">{{ showTitle ? 'Show Description' : 'Show Title' }}</button>
+                <button @click="toggle">
+                    {{ showTitle ? "Show Description" : "Show Title" }}
+                </button>
+
                 <button @click="loadInfoPage">More Info</button>
             </div>
 
@@ -62,7 +57,6 @@
                 <button @click="next">Next</button>
             </div>
 
-            <!-- Modal overlay -->
             <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
                 <div class="modal-content">
                     <button class="close-btn" @click="closeModal">&times;</button>
@@ -77,8 +71,8 @@
                 data: {
                     current: {},
                     showTitle: true,
-                    infoContent: "",
-                    showModal: false
+                    showModal: false,
+                    infoContent: ""
                 },
                 created() {
                     this.loadCurrent();
@@ -87,21 +81,12 @@
                     async loadCurrent() {
                         const res = await fetch("http://localhost:3000/item");
                         const data = await res.json();
-
-                        // FIX: Prepend assets/ and info/
-                        data.item.img = "assets/" + data.item.img;
-                        data.item.infoPage = "info/" + data.item.infoPage;
-
                         this.current = data.item;
                     },
 
                     async next() {
                         const res = await fetch("http://localhost:3000/item/next");
                         const data = await res.json();
-
-                        data.item.img = "assets/" + data.item.img;
-                        data.item.infoPage = "info/" + data.item.infoPage;
-
                         this.current = data.item;
                         this.showTitle = true;
                     },
@@ -109,10 +94,6 @@
                     async prev() {
                         const res = await fetch("http://localhost:3000/item/prev");
                         const data = await res.json();
-
-                        data.item.img = "assets/" + data.item.img;
-                        data.item.infoPage = "info/" + data.item.infoPage;
-
                         this.current = data.item;
                         this.showTitle = true;
                     },
@@ -122,20 +103,13 @@
                     },
 
                     async loadInfoPage() {
-                        if (!this.current.infoPage) {
-                            this.infoContent = "<p>No info page available.</p>";
-                            this.showModal = true;
-                            return;
-                        }
-
                         try {
-                            const response = await fetch(this.current.infoPage);
+                            const response = await fetch("info/" + this.current.infoPage);
                             const html = await response.text();
-                            this.infoContent = html.replace(/<\/?html>|<\/?body>/g, '');
-                        } catch (err) {
+                            this.infoContent = html.replace(/<\/?html>|<\/?body>/g, "");
+                        } catch {
                             this.infoContent = "<p>Error loading info page.</p>";
                         }
-
                         this.showModal = true;
                     },
 
@@ -146,22 +120,21 @@
             });
         </script>
 
-
-        <!-- Curriculum / Dangers Section -->
         <section id="curriculum" class="container my-5">
             <div class="row align-items-center mb-4">
                 <div class="col-md border border-secondary rounded-3 bg-light p-4">
                     <h3>Dangers to Marine Life</h3>
-                    <p>The ocean faces numerous threats from human activities and environmental changes:</p>
+                    <p>The ocean faces numerous threats:</p>
                     <ul>
-                        <li>Plastic pollution and chemical waste</li>
-                        <li>Overfishing and destructive practices</li>
-                        <li>Climate change and acidification</li>
-                        <li>Coral reef destruction</li>
+                        <li>Pollution</li>
+                        <li>Overfishing</li>
+                        <li>Climate change</li>
+                        <li>Coral destruction</li>
                     </ul>
                 </div>
+
                 <div class="col-md">
-                    <img src="assets/Polution.png" class="w-100" alt="Dangers">
+                    <img src="assets/Polution.png" class="w-100">
                 </div>
             </div>
 
@@ -169,15 +142,14 @@
 
             <div class="row align-items-center">
                 <div class="col-md">
-                    <img src="assets/Solution.png" class="w-100" alt="Solution">
+                    <img src="assets/Solution.png" class="w-100">
                 </div>
                 <div class="col-md border border-secondary rounded-3 bg-light p-4">
-                    <h3>Solutions to Protect Marine Life</h3>
+                    <h3>Solutions</h3>
                     <ul>
-                        <li>Reduce plastic use</li>
-                        <li>Support sustainable fishing</li>
-                        <li>Restore marine habitats</li>
-                        <li>Use cleaner energy sources</li>
+                        <li>Reduce plastic</li>
+                        <li>Sustainable fishing</li>
+                        <li>Clean energy</li>
                     </ul>
                 </div>
             </div>
@@ -185,7 +157,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-bottom">
             <p>&copy; 2025 OceanWatch. All rights reserved.</p>
